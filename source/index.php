@@ -73,13 +73,13 @@ include "sidebar.php";
             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="../img/spin.svg" />
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:390px;overflow:hidden;">
-            <div>
+            <!-- <div>
                 <img data-u="image" src="../img/2.jpg" />
-            </div>
+            </div> -->
             <div>
-                <img data-u="image" src="../img/1.jpg" />
+                <img data-u="image" src="../img/11.jpg" />
             </div>
-            <div>
+            <!-- <div>
                 <img data-u="image" src="../img/3.jpg" />
             </div>
             <div>
@@ -99,7 +99,7 @@ include "sidebar.php";
             </div>
             <div>
                 <img data-u="image" src="../img/9.jpg">
-            </div>
+            </div> -->
             <a data-u="any" href="https://www.jssor.com" style="display:none">slider in bootstrap</a>
         </div>
         <!-- Bullet Navigator -->
@@ -201,13 +201,13 @@ include "sidebar.php";
 <!-- Product Information End -->
 
 <div align="center">
-<h3><b>What is Ghuri.com</b></h3>
-<p><a style="color: darkblue" href="about.php">read more...</a></p>
+<h3><b>What is Grameenshilpo.com</b></h3>
+<p><a style="color: darkblue" href="about.php">Read more...</a></p>
 </div>
 
-<div align="center" style="margin-top: 3%">
+<!-- <div align="center" style="margin-top: 3%">
 <img style="height: 300px; width: 100%;" src="../img/Buy Sell Banner.jpg">
-</div>
+</div> -->
 
 <!-- Address info start -->                                                                     
 <?php include "address.php" ?>  
