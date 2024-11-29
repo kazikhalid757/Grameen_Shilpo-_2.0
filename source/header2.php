@@ -37,11 +37,12 @@ $sport = "Sports and Travels";
 <body>
 	<nav>
 		    <ul class="nav navbar-nav" style="border-bottom: 2px solid gray;width: 100%">
-				 <li class="li" ><a class="a" href="subIndex.php?pCat=<?= $male; ?>" > Men's Fashion </a></li>
-				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $female; ?>"> Women's Fashion </a></li>
-				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $baby; ?>"> Baby's Fashion </a></li>
-				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $phone; ?>"> Phone & Tablets</a></li>
-				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $sport; ?>"> Sports & Travels</a></li>
+				 <li class="li" ><a class="a" href="subIndex.php?pCat=<?= $male; ?>" > মৃৎশিল্প </a></li>
+				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $female; ?>"> বাঁশ-বেত </a></li>
+				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $baby; ?>"> বস্তু শিল্প </a></li>
+				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $phone; ?>"> গহনা শিল্প</a></li>
+				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $sport; ?>"> পাটজাত</a></li>
+				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $sport; ?>"> শীতলপাটি</a></li>
 				 <li class="li"><a class="a" href="allC.php"> All Categories</a></li>
 		   </ul>
 	

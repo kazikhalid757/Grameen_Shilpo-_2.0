@@ -12,19 +12,19 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==1){
 if(isset($_GET['pCat'])){
     $pCat = $_GET['pCat'];
     if($pCat == "Men\'s Fashion"){
-    	$category = "Men's Fashion";
+    	$category = "মৃৎশিল্প";
     }
     if($pCat == "Women\'s Fashion"){
-    	$category = "Women's Fashion";
+    	$category = "বাঁশ-বেত";
     }
     if($pCat == "Baby\'s Fashion"){
-    	$category = "Baby's Fashion";
+    	$category = "বস্তু শিল্প";
     }
     if($pCat == "Phone and Tablets"){
-    	$category = "Phone & Tablets";
+    	$category = "গহনা শিল্প";
     }
     if($pCat == "Sports and Travels"){
-    	$category = "Sports & Travels";
+    	$category = "পাটজাত";
     }
 	$result = $mysqli->query("SELECT * FROM productlist WHERE productFor='$pCat'");
 
