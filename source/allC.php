@@ -43,57 +43,47 @@
 	<!-- Categories row 1 -->
 <div class="row" style="margin-left: 10%">
 	<div style="width: 20%; margin: 1%;" class="col-md-12">
-		<h4 style="cursor: pointer;" data-target="#col1Content" data-toggle="collapse">MEN'S FASHION</h4>
-		<div id="col1Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
+		<h4 style="cursor: pointer;" data-target="#col1Content" data-toggle="collapse">মৃৎশিল্প</h4>
+		<!-- <div id="col1Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
 			Clothings<br>Shoes<br>Winter Clothing<br>Men's Accessories
-		</div>
+		</div> -->
 	</div>
 	<div style="width: 20%; margin: 1%" class="col-md-12">
-		<h4 style="cursor: pointer;" data-target="#col2Content" data-toggle="collapse">WOMEN'S FASHION</h4>
-		<div id="col2Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
+		<h4 style="cursor: pointer;" data-target="#col2Content" data-toggle="collapse">বাঁশ-বেত</h4>
+		<!-- <div id="col2Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
 			Clothings<br>Shoes<br>Winter Clothing<br>Women's Accessories
-		</div>
+		</div> -->
 	</div>
 	<div style="width: 20%; margin: 1%" class="col-md-12">
-		<h4 style="cursor: pointer;" data-target="#col3Content" data-toggle="collapse">BABY, KIDS & TOYS</h4>
-		<div id="col3Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
+		<h4 style="cursor: pointer;" data-target="#col3Content" data-toggle="collapse">বস্তু শিল্প</h4>
+		<!-- <div id="col3Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
 			Boys Fashion<br>Girls Fashion<br>Toys & Games<br>School Essentials
-		</div>
-	</div>
-	<div style="width: 20%; margin: 1%" class="col-md-12">
-		<h4 style="cursor: pointer;" data-target="#col4Content" data-toggle="collapse">PHONES & TABLETS</h4>
-		<div id="col4Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
-			Smartphones<br>Tablets<br>Phones & Tablets Accessories<br>Landline
-		</div>
+		</div> -->
 	</div>
 
 </div>
 
+     
+
 <!-- Categories row 2 -->
 <div class="row" style="margin-left: 10%">
 	<div style="width: 20%; margin: 1%;" class="col-md-12">
-		<h4 ><a href="#col5Content" data-toggle="collapse" style="color: black">COMPUTING & GAMING</a></h4>
-		<div id="col5Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
+		<h4 ><a href="#col5Content" data-toggle="collapse" style="color: black">গহনা শিল্প</a></h4>
+		<!-- <div id="col5Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
 			Laptops<br>Desktops & Monitors<br>Gaming<br>Printers, Scanners & Supplies<br>Computer Accessories
-		</div>
+		</div> -->
 	</div>
 	<div style="width: 20%; margin: 1%" class="col-md-12">
-		<h4><a href="#col6Content" data-toggle="collapse" style="color: black">SPORTS & TRAVELS</a></h4>
-		<div id="col6Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
+		<h4><a href="#col6Content" data-toggle="collapse" style="color: black">পাটজাত</a></h4>
+		<!-- <div id="col6Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
 			Exercise & Fitness<br>Team Sports<br>Sportswear<br>Outdoor Activities
-		</div>
+		</div> -->
 	</div>
 	<div style="width: 20%; margin: 1%" class="col-md-12">
-		<h4><a href="#col7Content" data-toggle="collapse" style="color: black">BEAUTY & HEALTH</a></h4>
-		<div id="col7Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
+		<h4><a href="#col7Content" data-toggle="collapse" style="color: black">শীতলপাটি</a></h4>
+		<!-- <div id="col7Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
 			Makeup<br>Personal care<br>Hair care<br>Skin Care
-		</div>
-	</div>
-	<div style="width: 20%; margin: 1%" class="col-md-12">
-		<h4><a href="#col8Content" data-toggle="collapse" style="color: black">OTHERS</a></h4>
-		<div id="col8Content" class="collapse" style="border-bottom: 1px solid green;width: 220px">
-			Books & Stationery<br>Musical Instruments<br>Automotive & Motorcycles
-		</div>
+		</div> -->
 	</div>
 
 </div>

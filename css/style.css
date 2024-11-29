@@ -435,7 +435,7 @@ padding: 15px;
 .sign_up_form button {
     font-size: 15px;
     background-color: #182938;
-    color: white;
+    color: rgb(171, 204, 213);
     padding: 8px;
     margin: 8px 0;
     border: none;
@@ -451,11 +451,10 @@ padding: 15px;
 
 /* Add padding to container elements */
 .sign_up_container {
-    width: 100%;
-    margin: auto;
-    padding: 16px;
-    border: 1px solid #A9A9A9;
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust the transparency here */
+    padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sign_up_container input[type="text"], input[type="email"], input[type="number"], input[type="password"]{
@@ -489,58 +488,107 @@ padding: 15px;
 
 /****************Style for page Sign In start*****************/
 /*Sign in Form*/
-.sign_in_form{
-	padding-top: 2%;
-	padding-bottom: 5%;
+/* Adjustments for .sign_in_form container */
+.sign_in_form {
+    padding-top: 5%; /* Increased padding-top for better vertical alignment */
+    padding-bottom: 5%; /* Adjusted bottom padding */
+    margin: 0 auto; /* Centering the form vertically */
+    max-width: 500px; /* Set max-width for larger screens */
 }
 
-.sign_in_input{
-    width: 30%;
-    margin-left: 35%;
+/* Adjust .sign_in_input for responsiveness */
+.sign_in_input {
+    width: 100%;
+    max-width: 400px; /* Set max-width to avoid overflowing */
+    margin-left: auto; /* Center form on small screens */
+    margin-right: auto; /* Center form on small screens */
 }
 
+/* Button Styling */
 .sign_in_form button {
-    font-size: 15px;
+    font-size: 16px;
     background-color: #182938;
     color: white;
-    padding: 8px;
-    margin:8px;
+    padding: 12px;
+    margin: 10px 0; /* Margin for spacing between elements */
     border: none;
     cursor: pointer;
-    width: 100%;
-    border-radius: 20px;
+    width: auto; /* Set button to auto width, so it's not stretched */
+    border-radius: 25px;
+    transition: all 0.3s ease;
 }
 
- button:hover {
-    opacity: 0.5;
+.sign_in_form button:hover {
+    background-color: #1e3d58; /* Darker color on hover */
+    opacity: 0.9; /* Slight opacity change on hover */
 }
 
-
+/* Forgot Password Styling */
 .forgot_psw {
-    
+    text-align: center;
     color: red;
+    font-size: 14px;
 }
 
-.sign_in_form h3{
+.forgot_psw a {
+    color: red;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot_psw a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for h3 (heading with decorative lines) */
+.sign_in_form h3 {
     text-align: center;
     position: relative;
-    overflow: hidden;
-    z-index: 1;
+    margin: 20px 0; /* Spacing above and below the heading */
 }
 
-    .sign_in_form h3:before, .sign_in_form h3:after {
+.sign_in_form h3:before, .sign_in_form h3:after {
     position: absolute;
-    top: 51%;
+    top: 50%;
     overflow: hidden;
     width: 50%;
     height: 1px;
-    content: '\a0';
+    content: '';
     background-color: gray;
 }
+
 .sign_in_form h3:before {
     margin-left: -50%;
     text-align: right;
 }
+
+.sign_in_form h3:after {
+    margin-right: -50%;
+    text-align: left;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 767px) {
+    .sign_in_form {
+        padding-top: 10%; /* Increase padding on small screens */
+        padding-bottom: 10%; /* Adjust padding for mobile */
+    }
+
+    .sign_in_input {
+        width: 90%; /* Allow input fields to expand */
+        max-width: 100%; /* Ensure input fields are not too wide */
+        margin-left: 5%; /* Center on small screens */
+    }
+
+    .sign_in_form button {
+        font-size: 14px; /* Adjust button size for smaller screens */
+    }
+
+    .sign_in_form img {
+        height: 80px; /* Reduce logo size for mobile screens */
+    }
+}
+
 .color {
     background-color: #ccc;
 }
