@@ -49,9 +49,9 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
 
 
 <nav class="navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="img" href="index.php"><img style="height: 50px;width: 80px;" src="../images/logo.png"> </a>
+<div class="container-fluid" style="background-color: #7c522c;">
+       <div class="navbar-header" style="color: #7c522c;">
+      <a class="img" href="index.php"><img style="height: 50px;width: 150px;" src="../images/logo.png"> </a>
     </div>
  
     <ul class="nav navbar-nav navbar-right">
@@ -77,8 +77,10 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
               ?>)</a>
         </li>
     </ul>
+
+    
      <!-- Search start -->
-    <form class="navbar-form" action="search.php" method="GET">
+    <!-- <form class="navbar-form" action="search.php" method="GET">
     <div class="input-group search_box">
         <input type="text" class="form-control" placeholder="Search" name="searchQuery" id="searchQuery">
         <div class="input-group-btn">
@@ -87,7 +89,20 @@ if (isset($_GET['logout']) && $_GET['logout'] == 1) {
           </button>
         </div>
       </div>
-      </form>
+      </form> -->
+
+      <!-- Search start -->
+<form class="navbar-form" action="search.php" method="GET" style="color: #7c522c !important;">
+    <div class="input-group search_box">
+        <input type="text" class="form-control" placeholder="Search" name="searchQuery" id="searchQuery">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+    </div>
+</form>
+
     <!-- Search End -->
   </div>
 </nav>
