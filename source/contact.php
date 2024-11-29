@@ -20,7 +20,7 @@
     		<div class="container">
     			<div class="row">
     				<div class="col-md-12">
-        <h2 align="center"  style="font-size: 55px;color: white">CONTACT <span style="color: #28A6E8;      font-family: 'Open Sans', sans-serif;">Ghuri</span></h2>
+        <h2 align="center"  style="font-size: 55px;color: white">CONTACT <span style="color: #28A6E8;      font-family: 'Open Sans', sans-serif;">Grameen Shilpo</span></h2>
     				</div>
     				<div class="col-md-6 col-sm-6 col-xs-12 wow fadeInLeft" data-wow-offset="50" data-wow-delay="0.9s">
     					<form action="../login-system/mail.php" method="post">

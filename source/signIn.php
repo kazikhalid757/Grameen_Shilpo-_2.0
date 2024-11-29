@@ -30,7 +30,7 @@
 <!-- Sign In form start -->
 <div class="sign_in_form">
 <div align="center">
-<img style="height: 200px; width: 15% auto;" src="../images/logo.png">
+<img style="height: 200px; width: 15% auto;" src="../images/p_logo.png">
 </div>
 
 <!-- <form action="../login-system/login.php" method="POST" id="login">
