@@ -1,45 +1,42 @@
 <?php
-
 require "../login-system/db.php";
 require "../seller/storeProductList.php";
-if(!isset($_SESSION)) session_start();
+if (!isset($_SESSION)) session_start();
 
-$email = $_SESSION['email'];
+$email = $_SESSION['email'] ?? null;
 $result = $mysqli->query("SELECT * FROM store WHERE email='$email'");
+$user = $result ? $result->fetch_assoc() : null;
 
-$user = $result->fetch_assoc();
+$store_name = $user['store_name'] ?? '';
+$edit_state = false;
+$productFor = $productPic = $productName = $description = $price = $quantity = '';
 
-if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==1){
-  $store_name = $user['store_name'];
-}
-else{
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == 1) {
+  $store_name = $user['store_name'] ?? '';
+} else {
   header("location:index.php");
 }
 
-if(isset($_GET['edit'])){
+if (isset($_GET['edit'])) {
   $id = $_GET['edit'];
   $singleRec = mysqli_query($mysqli, "SELECT * FROM productlist WHERE id=$id");
-  $records = mysqli_fetch_array($singleRec);
-
-  $productFor  = $records['productFor'];
-  $productPic  = $records['productPic'];
-  $productName = $records['productName'];
-  $description = $records['description'];
-  $price       = $records['price'];
-  $quantity    = $records['quantity'];
-  $edit_state  = true;
+  if ($singleRec) {
+    $records = mysqli_fetch_array($singleRec);
+    $productFor = $records['productFor'] ?? '';
+    $productPic = $records['productPic'] ?? '';
+    $productName = $records['productName'] ?? '';
+    $description = $records['description'] ?? '';
+    $price = $records['price'] ?? '';
+    $quantity = $records['quantity'] ?? '';
+    $edit_state = true;
+  }
 }
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Add Product</title>
-
+  <title>Add Product</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
@@ -47,111 +44,121 @@ if(isset($_GET['edit'])){
   <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="../css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="../css/style.css">
-  
-
-  <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   <script type="text/javascript" src="../js/cp_seller.js"></script>
-
   <script type="text/javascript" src="../js/add_product.js"></script>
-
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+    }
+    .form-container {
+      background: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+    }
+    .form-title {
+      color: #F8A036;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-control {
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+    }
+    .btn-primary {
+      background-color: #F8A036;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-primary:hover {
+      background-color: #d37d2b;
+    }
+    .product-image {
+      display: block;
+      margin: 0 auto 20px;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 2px dashed #ccc;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
-  <?php include "header.php" ?>
+  <?php include "header.php"; ?>
+  <?php include "sidebar.php"; ?>
 
-  <?php include "sidebar.php" ?>
-
-  <div align="center">
-    <h1> <b style="color: #F8A036"><?php echo " ".$store_name;?></b> Store </h1>
-    <h4>Add Your Product</h4>
-  </div>
-  <form action="../seller/storeProductList.php" method="post" enctype="multipart/form-data">
-    <? if(isset($_GET['edit'])){ ?>
-      <input type="hidden" name="id" value="<?= $id ?>">
-    <? } ?>
-    <div style="border: 1px solid gray;margin-left: 10%;margin-right: 10%;border-radius: 10px;margin-bottom: 30px">
-     <h4 style="margin-left: 5%;border-bottom: 1px solid gray"><b>Picture of Product</b></h4>
-
-
-     <div style="margin: 30px;">
-      <label class="btn btn-default">
-        +maximum pic limit 2mb jpg or png formate<input type="file" name="productPic" style="display: none;" accept="image/*" id="product_select"/>
-      </label>
-
-      <?php if ($edit_state == false): ?>
-       <img id="product_image" onchange="readURL4(this)" src="../img/addp.jpg" style="margin-left: 40%;height: 220px;width: 220px">
-       <?php else: ?>
-         <input type="hidden" name="productPic" value="<?= $productPic; ?>">
-         <?php echo "<img style=\"margin-left: 40%;height: 220px;width: 220px\" id=\"product_image\" onchange=\"readURL4(this)\" src='../seller/productPic/".$records['productPic']."'>"; ?>
-       <?php endif; ?>
-
-
-       <div>
-         <label for="continent">Select a category</label>
-         <select name="productFor" style="border-radius: 10px;cursor: pointer;" id="continent" onchange="countryChange(this);" required>
-          <option value="<?= $productFor; ?>"><?= $productFor; ?></option>
-          <!-- <option name="itemFor" value="" disabled selected>Select</option> -->
-          <option name="itemFor" value="Men\'s Fashion">Men's Fashion</option>
-          <option name="itemFor" value="Women\'s Fashion">Women's Fashion</option>
-          <option name="itemFor" value="Baby\'s Fashion">Baby's Fashion</option>
-          <option name="itemFor" value="Phone and Tablets">Phone & Tablets</option>
-          <option name="itemFor" value="Electronics">Electronics</option>
-          <option name="itemFor" value="Home and Living">Home & Living</option>
-          <option name="itemFor" value="Sports and Travels">Sports & Travels</option>
-          <option name="itemFor" value="Others">Others</option>
+  <div class="form-container">
+    <h1 class="form-title"><?= $store_name ?> Store</h1>
+    <form action="../seller/storeProductList.php" method="post" enctype="multipart/form-data">
+      <?php if (isset($_GET['edit'])) { ?>
+        <input type="hidden" name="id" value="<?= $id ?>">
+      <?php } ?>
+      <div class="form-group">
+        <img src="<?= $edit_state ? "../seller/productPic/$productPic" : "../img/addp.png"; ?>" class="product-image" alt="Product Image">
+        <label>Picture of Product</label>
+        <input type="file" name="productPic" class="form-control">
+        
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select name="productFor" class="form-control" required>
+          <option value="<?= $productFor ?>"><?= $productFor ?: "Select a Category" ?></option>
+          <option value="Men's Fashion">মৃৎশিল্প</option>
+          <option value="Women's Fashion">বাঁশ-বেত</option>
+          <option value="Baby's Fashion">বস্তু শিল্প</option>
+          <option value="Phone and Tablets">গহনা শিল্প</option>
+          <option value="Home and Living">পাটজাত</option>
+          <option value="Sports and Travels">শীতলপাটি</option>
+          <option value="Others">অন্যান্য</option>
         </select>
-        <br/>
-  <!-- <label for="country">Select a category</label>
-  <select id="country" style="border-radius: 10px;cursor: pointer;">
-    <option value="0">Category</option>
-  --></select>
-</div>
+      </div>
+      
 
 
-</div>
-</div>
-
-<h4 style="margin-left: 10%"><b>Name of the product</b></h4>
-<input style="margin-left: 10%; height: 30px; border-radius: 10px; border: 1px solid gray; width: 20%;" type="text" name="productName" value="<?= $productName; ?>" required>
-
-<h4 style="margin-left: 10%"><b>Description</b></h4>
-
-<?php if ($edit_state == false): ?>
-  <textarea style="overflow: hidden; width: 80%;height: 100px;border-radius: 10px;margin-left: 10%" name="productDes" placeholder="write about Product" required></textarea>
-  <?php else: ?>
-    <textarea style="overflow: hidden; width: 80%;height: 100px;border-radius: 10px;margin-left: 10%" name="productDes" required><?= $description; ?></textarea>
-  <?php endif; ?>
 
 
-  <h4 style="margin-left: 10%"><b>Price</b></h4>
-  <input type="number" name="price" value="<?= $price; ?>" style="height: 30px;border-radius: 10px ;border: 1px solid gray;width: 10%;margin-left: 10%;">TK
 
+      <div class="form-group">
+        <label>Name of the Product</label>
+        <input type="text" name="productName" value="<?= $productName ?>" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea name="productDes" rows="4" class="form-control" required><?= $description ?></textarea>
+      </div>
+      <div class="form-group">
+        <label>Price (TK)</label>
+        <input type="number" name="price" value="<?= $price ?>" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" name="quantity" value="<?= $quantity ?>" class="form-control" required>
+      </div>
+      <button type="submit" name="<?= $edit_state ? 'update' : 'submit'; ?>" class="btn-primary">
+        <?= $edit_state ? 'Update Product' : 'Add Product' ?>
+      </button>
+    </form>
+  </div>
 
-  <h4 style="margin-left: 10%"><b>Quantity</b></h4>
-  <input type="number" name="quantity" value="<?= $quantity; ?>" style="height: 30px;border-radius: 10px ;border: 1px solid gray;width: 10%;margin-left: 10%;">
-
-  <br>
-
-  <!--		<button class="btn btn-default" type="submit" name="submit" style="margin: 20px;margin-left: 10%;background-color: #222222;color: white;font-size: 12px">Add</button>-->
-  <?php if ($edit_state == false): ?>
-    <button type="submit" name="submit" class="btn btn-default" style="margin: 20px;margin-left: 10%;background-color: #222222;color: white;font-size: 12px">Add</button>
-    <?php else: ?>
-      <button type="submit" name="update" class="btn btn-default" style="margin: 20px;margin-left: 10%;background-color: #222222;color: white;font-size: 12px">Update</button>
-    <?php endif; ?>
-
-  </form>
-
-
-  <!--		<button class="btn btn-default" style="margin: 20px;margin-left: 10%;background-color: #222222;color: white;font-size: 12px;">Add more</button>-->
-
-
-  <?php include  "address.php" ?>
-
-  <?php include "footer.php" ?>
-
+  <?php include "footer.php"; ?>
 </body>
 </html>
