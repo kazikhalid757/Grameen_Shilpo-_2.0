@@ -28,7 +28,7 @@
   <!-- About Section -->
   <div class="about_page">
     <div class="text-center">
-      <img src="../img/about.gif" alt="About Ghuri" class="img-responsive" style="margin: 20px auto;">
+      <img src="../img/about.gif" alt="About Grameen Shilpo" class="img-responsive" style="margin: 20px auto; object-fit: cover;">
     </div>
 
     <h2 class="text-center" style="font-size: 30px; border-bottom: 1px solid gray; margin: 20px 8%;"><b>About Grameen Shilpo</b></h2>
