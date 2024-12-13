@@ -24,7 +24,7 @@
 
 
 
-	<title>সকল ক্যাটাগরি</title>
+	<!-- <title>সকল ক্যাটাগরি</title> -->
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 
 <!-- Categories -->
 <div  style="margin: 5%">
-<h3><b>সকল ক্যাটাগরি</b></h3>
+<!-- <h3><b>সকল ক্যাটাগরি</b></h3> -->
 <div style="border: 1px solid #A9A9A9;border-radius: 10px">
 	
 	<!-- Content part start -->

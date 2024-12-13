@@ -26,7 +26,7 @@
 	
 <div class="member_plan">
 <h3 align="center">Membership Plan</h3>
-<table align="center" style="border: 1px solid #7100BD">
+<table align="center" style="border: 1px solid #7100BD; margin-top: 20px;">
 	<tr>
 		<th><p>Free<br>$0.00<br>per month</p></th>
 		<th><p>Basic<br>$4.95<br>per month</p></th>
@@ -34,13 +34,13 @@
 	</tr>
 	<tr align="center">
 		<td><p>Limited<br>Limited<br>Limited<br>Limited<br>Limited<br>Limited<br>Limited<br>Limited<br></p>
-		<button>Try now</button>
+		<button class="btn btn-primary">Try now</button>
 		</td>
 		<td><p>Unlimited<br>Unlimited<br>Unlimited<br>Unlimited<br>Limited<br>Limited<br>Limited<br>Limited<br></p>
-		<button>Try now</button>
+		<button class="btn btn-primary">Try now</button>
 		</td>
 		<td><p>Unlimited<br>Unlimited<br>Unlimited<br>Unlimited<br>Unlimited<br>Unlimited<br>Unlimited<br>Unlimited<br></p>
-		<button>Try now</button>
+		<button class="btn btn-primary">Try now</button>
 		</td>
 	</tr>
 </table>

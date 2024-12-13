@@ -1,80 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<title>FAQ</title>
-
-<script>
-function on(id) {
-    document.getElementById(id).style.display = "block";
-}
-
-function off(id) {
-    document.getElementById(id).style.display = "none";
-}
-</script>
-
+	<script>
+	function showOverlay(id) {
+	    document.getElementById(id).style.display = "block";
+	}
+	function hideOverlay(id) {
+	    document.getElementById(id).style.display = "none";
+	}
+	</script>
 </head>
 <body class="faq">
-
 	<?php include "header.php" ?>
 	<?php include "sidebar.php" ?>
-
-<div align="center">
-	<h1><b>Hello, How can we help you?</b></h1>
-</div>
-
-<!-- OVERLAY TEXT START -->
-
-<div id="o1" class="overlay" onclick="off('o1')">
-  <div id="text">Overlay Text 1 Overlay Text 1 Overlay Text 1 </div>  
-</div>
-
-<div id="o2" class="overlay" onclick="off('o2')">
-  <div id="text">Overlay Text 2 Overlay Text 2 Overlay Text 2 </div>  
-</div>
-
-<div id="o3" class="overlay" onclick="off('o3')">
-  <div id="text">Overlay Text 3 Overlay Text 3 Overlay Text 3 </div>  
-</div>
-
-<div id="o4" class="overlay" onclick="off('o4')">
-  <div id="text">Overlay Text 4 Overlay Text 4 Overlay Text 4 </div>  
-</div>
-
-<div id="o5" class="overlay" onclick="off('o5')">
-  <div id="text">Overlay Text 5 Overlay Text 5 Overlay Text 5 </div>  
-</div>
-
-
-
-
-<!-- OVERLAY TEXT END -->
-
-	<div style="margin: 6%;">
-		<label>Browse your help</label>
-		<h3 onclick="on('o1')">1. Where's My Stuff? </h3>
-		<h3 onclick="on('o2')">2. Managing Your Orders? </h3>
-		<h3 onclick="on('o3')">3. Account Settings & Payment Methods? </h3>
-		<h3 onclick="on('o4')">4. Returns & Refunds? </h3>
-		<h3 onclick="on('o5')">5. Shipping Policies? </h3>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1><b>হ্যালো, আমরা আপনাকে কিভাবে সাহায্য করতে পারি?</b></h1>
+			</div>
+		</div>
 	</div>
-<div style="margin: 6%;margin-left: 10%;font-size: 25px">
-	<p>Further any query?<a href="contact.php"> click here.</a></p>
-</div>
-
-<?php include "address.php" ?>
-<?php include "footer.php" ?>
-
+	<!-- OVERLAY TEXT START -->
+	<!-- <div id="o1" class="overlay" onclick="hideOverlay('o1')">
+	  <div id="text">ওভারলে টেক্সট ১ ওভারলে টেক্সট ১ ওভারলে টেক্সট ১ </div>  
+	</div>
+	<div id="o2" class="overlay" onclick="hideOverlay('o2')">
+	  <div id="text">ওভারলে টেক্সট ২ ওভারলে টেক্সট ২ ওভারলে টেক্সট ২ </div>  
+	</div>
+	<div id="o3" class="overlay" onclick="hideOverlay('o3')">
+	  <div id="text">ওভারলে টেক্সট ৩ ওভারলে টেক্সট ৩ ওভারলে টেক্সট ৩ </div>  
+	</div>
+	<div id="o4" class="overlay" onclick="hideOverlay('o4')">
+	  <div id="text">ওভারলে টেক্সট ৪ ওভারলে টেক্সট ৪ ওভারলে টেক্সট ৪ </div>  
+	</div>
+	<div id="o5" class="overlay" onclick="hideOverlay('o5')">
+	  <div id="text">ওভারলে টেক্সট ৫ ওভারলে টেক্সট ৫ ওভারলে টেক্সট ৫ </div>  
+	</div> -->
+	<!-- OVERLAY TEXT END -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="faq-section">
+					<h2>আপনার সাহায্য দেখুন</h2>
+					<div class="faq-list">
+						<div class="faq-item" onclick="showOverlay('o1')">
+							<h3>১. আমার জিনিসটা কোথায়? </h3>
+						</div>
+						<div class="faq-item" onclick="showOverlay('o2')">
+							<h3>২. আপনার অর্ডার কীভাবে পরিচালনা করবেন? </h3>
+						</div>
+						<div class="faq-item" onclick="showOverlay('o3')">
+							<h3>৩. অ্যাকাউন্ট সেটিংস এবং পেমেন্ট মেথড কীভাবে সেট করবেন? </h3>
+						</div>
+						<div class="faq-item" onclick="showOverlay('o4')">
+							<h3>৪. প্রত্যাবর্তন এবং ফেরত কীভাবে করবেন? </h3>
+						</div>
+						<div class="faq-item" onclick="showOverlay('o5')">
+							<h3>৫. শিপিং নীতিমালা কীভাবে পরিচালনা করবেন? </h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<p>আরো কোনো প্রশ্ন? <a href="contact.php">এখানে ক্লিক করুন।</a></p>
+			</div>
+		</div>
+	</div>
+	<?php include "address.php" ?>
+	<?php include "footer.php" ?>
 </body>
 </html>

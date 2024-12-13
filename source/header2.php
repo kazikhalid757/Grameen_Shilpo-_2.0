@@ -43,7 +43,7 @@ $sport = "Sports and Travels";
 				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $phone; ?>"> গহনা শিল্প</a></li>
 				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $sport; ?>"> পাটজাত</a></li>
 				 <li class="li"><a class="a" href="subIndex.php?pCat=<?= $sport; ?>"> শীতলপাটি</a></li>
-				 <li class="li"><a class="a" href="allC.php">সকল ক্যাটাগরি</a></li>
+				 <!-- <li class="li"><a class="a" href="allC.php">সকল ক্যাটাগরি</a></li> -->
 		   </ul>
 	
 	</nav>

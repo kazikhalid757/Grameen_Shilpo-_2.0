@@ -94,7 +94,7 @@ session_start();
 		<input type="number" name="Postalcode" placeholder="postal code" required><br>
 
 		<label ><b>Store Banner</b></label><br>
-		 <img  class="store_banner_image" id="store_banner_upload" onchange="readURL3(this)" src="../images/store_banner.png"><br>
+		 <img  class="store_banner_image" id="store_banner_upload" onchange="readURL3(this)" src="../images/store_banner.jpg"><br>
 		 
 		 <input style="width: 100%;border: none" type="file" id="store_banner_image_select" name="storePic" class="filestyle" data-btnClass="btn btn-primary" accept=".jpg,.png" required><br>
 

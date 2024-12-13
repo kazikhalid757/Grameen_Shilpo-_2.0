@@ -1,14 +1,13 @@
 <?php
 if(!isset($_SESSION)) session_start();
 
-$_SESSION['ref'] ="";
+$_SESSION['ref'] = "";
 
 if($_SESSION['ref'] == '1'){
-header("Refresh:0; url=check_out_item.php");
-	$_SESSION['ref'] = 0;
+    header("Refresh:0; url=check_out_item.php");
+    $_SESSION['ref'] = 0;
 }
 require "../login-system/db.php";
-if(!isset($_SESSION)) session_start();
 
 if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==1){
     $email = $_SESSION['email'];
@@ -17,8 +16,8 @@ if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==1){
 if(isset($_GET['del'])){
     $cId = $_GET['del'];
     header("Refresh:0; url=check_out_item.php");
-    $delQuery = " DELETE FROM `cart` WHERE `cart`.`cartId` = '$cId'  ";
-    mysqli_query($mysqli,$delQuery);
+    $delQuery = "DELETE FROM `cart` WHERE `cart`.`cartId` = '$cId'";
+    mysqli_query($mysqli, $delQuery);
 }
 
 if(isset($_POST['submit'])){
@@ -26,122 +25,139 @@ if(isset($_POST['submit'])){
     $updateQuantity = $_POST['quantity'];
 
     $upQuery = "UPDATE cart SET customerQty='$updateQuantity' WHERE cartId='$cartId'";
-    mysqli_query($mysqli,$upQuery);
+    mysqli_query($mysqli, $upQuery);
 }
 
 $sId = session_id();
 $result = $mysqli->query("SELECT * FROM cart WHERE sId='$sId'");
-	
-	$empty="";
-
+$empty = "";
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Check Out | Item</title>
 
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="../css/style.css">
-
-	<title>Check Out| Item</title>
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-	<?php include "header.php" ?>
-	<?php include "header2.php" ?>
-		<?php include "sidebar.php" ?>
-	
-	<div class="check_out_item">
-		<h3>Items in your cart</h3>
-		
-		<table>
-		<tr >
-            <th>SL</th>
-			<th>Item</th>
-			<th>Quantity</th>
-			<th>Unit Price</th>
-			<th>Total</th>
-			<th>Action</th>
-		</tr>
+<body style="padding-top: 20px;">
+    <?php include "header.php" ?>
+    <?php include "header2.php" ?>
+    <?php include "sidebar.php" ?>
+    
+    <div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+        <div class="check_out_item" style="padding: 20px;">
+            <h3 class="text-center" style="margin-bottom: 30px;">Items in your cart</h3>
+            
+            <div class="table-responsive" style="margin-bottom: 25px;">
+                <table class="table table-hover">
+                    <thead>
+                        <tr style="background-color: #f8f9fa;">
+                            <th style="padding: 15px;">SL</th>
+                            <th style="padding: 15px;">Item</th>
+                            <th style="padding: 15px;">Quantity</th>
+                            <th style="padding: 15px;">Unit Price</th>
+                            <th style="padding: 15px;">Total</th>
+                            <th style="padding: 15px;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $i = 0;
+                        $sum = 0;
+                        while ($cartInfo = mysqli_fetch_array($result)){
+                            $i++;
+                            $empty = $cartInfo['sId'];
+                        ?>
+                        <tr>
+                            <td style="vertical-align: middle; padding: 15px;"><?= $i; ?></td>
+                            <td style="vertical-align: middle; padding: 15px;">
+                                <div style="display: flex; align-items: center;">
+                                    <?php echo "<img src='../seller/productPic/".$cartInfo['proPic']."' class='img-thumbnail' style='width:100px; margin-right: 15px;'>"; ?>
+                                    <div>
+                                        <h5 style="margin-bottom: 5px;"><?= $cartInfo['proName']; ?></h5>
+                                        <p style="margin: 0;">Size: <?= $cartInfo['size']; ?></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td style="vertical-align: middle; padding: 15px;">
+                                <form action="" method="post" style="display: flex; align-items: center;">
+                                    <input type="hidden" name="cartId" value="<?= $cartInfo['cartId']; ?>">
+                                    <input class="form-control" style="width: 80px; margin-right: 10px;" type="number" name="quantity" value="<?= $cartInfo['customerQty']; ?>" min="1">
+                                    <button type="submit" name="submit" class="btn btn-primary btn-sm">Update</button>
+                                </form>
+                            </td>
+                            <td style="vertical-align: middle; padding: 15px;">৳ <?= number_format($cartInfo['price']); ?></td>
+                            <td style="vertical-align: middle; padding: 15px;">৳ <?= number_format($total = ($cartInfo['price'] * $cartInfo['customerQty'])); ?></td>
+                            <td style="vertical-align: middle; padding: 15px;">
+                                <button class="btn btn-danger btn-sm" onclick="deleteCartItem(<?= $cartInfo['cartId']; ?>)" style="padding: 8px 12px;">
+                                    <i class="fa fa-trash"></i> Remove
+                                </button>
+                            </td>
+                        </tr>
+                        <?php $sum = ($sum + $total); ?>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <?php $_SESSION['cart'] = $i; ?>
+        </div>
 
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-6" style="margin-bottom: 20px;">
+                <a href="index.php" class="btn btn-secondary" style="padding: 10px 20px;">
+                    <i class="fa fa-arrow-left"></i> Continue Shopping
+                </a>
+            </div>
+            <div class="col-md-6">
+                <div class="card" style="box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <div class="card-body" style="padding: 20px;">
+                        <h4 style="margin-bottom: 15px;">Order Summary</h4>
+                        <hr style="margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>Item Total:</span>
+                            <span>৳ <?= number_format($sum); ?></span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>Shipping:</span>
+                            <span>৳ <?= $shippingCost=100; ?></span>
+                        </div>
+                        <hr style="margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+                            <strong>Total:</strong>
+                            <strong>৳ <?= number_format($grandTotal = ($sum + $shippingCost)); ?></strong>
+                        </div>
+                        <a href="payment.php" class="btn btn-success btn-block <?php if($empty==''){ echo 'disabled'; } ?>" style="padding: 12px;">
+                            Proceed to Checkout <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <?php
-            $i = 0;
-            $sum = 0;
-            while ($cartInfo = mysqli_fetch_array($result)){
-                $i++;
-                $empty = $cartInfo['sId'];
-      ?>
-		<tr>
-            <td><?= $i; ?></td>
-			<td>
-				<p>
-<!--                    <img src="../images/logo.png">-->
-                    <?php echo "<img src='../seller/productPic/".$cartInfo['proPic']."'>"; ?>
-                    <?= $cartInfo['proName']; ?> <br>
-                    Size: <?= $cartInfo['size']; ?>
-                </p>
-			</td>
-			<td>
-                <form action="" method="post">
-                    <input type="hidden" name="cartId" value="<?= $cartInfo['cartId']; ?>">
-                    <input class="check_out_item_input" style="width: 30%" type="number" name="quantity" value="<?= $cartInfo['customerQty']; ?>">
-                    <input type="submit" name="submit" class="btn btn-primary" value="Update">
-                </form>
-			</td>
-			<td>৳ <?= $cartInfo['price']; ?></td>
-			<td>৳ <?= $total = ($cartInfo['price'] * $cartInfo['customerQty']); ?></td>
-            <td><a href="?del=<?= $cartInfo['cartId'];  ?>"  onclick='return confirm_delete()' class="btn btn-danger">X</a></td>
-		</tr>
-       <?php $sum = ($sum + $total); ?>
-      <?php } ?>
-	</table>
-        <?php $_SESSION['cart'] = $i; ?>
-</div>
+    <div style="margin-top: 40px;">
+        <?php include "address.php" ?>
+        <?php include "footer.php" ?>
+    </div>
 
-	<a href="index.php"> <button class="check_out_item_continue">Continue Shopping</button></a>
-
-	<div class="check_out_item_proceed">
-		<p style="font-size: 20px;">
-			Item Total : ৳ <?= $sum; ?><br>
-			Shipping&nbsp;&nbsp;&nbsp;&nbsp;: ৳ <?= $shippingCost=100; ?><br>
-			Total &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: ৳ <?= $grandTotal = ($sum + $shippingCost); ?>
-
-			<a href="payment.php"><button <?php  if ($empty==''){ ?> disabled <?php   } ?> class="btn">Proceed to Checkout</button></a>
-		</p>
-	</div>
-
-	
-	
-<div style="margin-top: 250px">
-<?php include "address.php" ?>
-<?php include "footer.php" ?>
-</div>
-
-
-
-<script>
-    function confirm_delete(){
-        return confirm("Are you sure you want to delete this data?");
+    <script>
+    function deleteCartItem(cartId) {
+        if(confirm("Are you sure you want to remove this item?")) {
+            window.location.href = 'check_out_item.php?del=' + cartId;
+        }
     }
-    //end of delete operation
-</script>
+    </script>
 
 </body>
 </html>
