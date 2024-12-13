@@ -18,6 +18,25 @@
 <script type="text/javascript" src="../js/phone_validation.js"></script>  <!-- Change new -->
 
 	<title>Sign Up</title>
+  <style>
+        /* Set background image for the entire page */
+        body {
+            background-image: url('../images/signIn.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set background for sign-in form */
+        .sign_in_form {
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+            padding: 40px;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
 

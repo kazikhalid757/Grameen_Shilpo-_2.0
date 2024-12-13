@@ -53,6 +53,71 @@ $result_boost = mysqli_query($mysqli, "SELECT * FROM productlist WHERE boost='1'
  <script type="text/javascript" src="../js/j1.js"></script>
 
     <title>Home</title>
+
+    <style>
+      .product {
+        background: #fff;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+      }
+      
+      .product:hover {
+        transform: translateY(-5px);
+      }
+
+      .product img {
+        border-radius: 8px;
+        object-fit: cover;
+        height: 180px !important; /* Reduced height */
+        width: 100% !important;
+      }
+
+      .product a.btn-primary {
+        background: #F8A036;
+        border: none;
+        border-radius: 20px;
+        padding: 8px 20px;
+        transition: background 0.3s;
+      }
+
+      .product a.btn-primary:hover {
+        background: #d37d2b;
+      }
+
+      .section-title {
+        position: relative;
+        margin-bottom: 30px;
+        padding-bottom: 10px;
+      }
+
+      .section-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: #F8A036;
+      }
+
+      .star-ratings-css {
+        color: #F8A036;
+      }
+
+        /* Set background image for the entire page */
+        /* body {
+            background-image: url('../images/signIn.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        } */
+    </style>
 </head>
 <body>
 
@@ -77,8 +142,9 @@ include "sidebar.php";
                 <img data-u="image" src="../img/2.jpg" />
             </div> -->
             <div>
-                <img data-u="image" src="../img/11.jpg" />
+                <img data-u="image" src="../img/11.jpg" style="object-fit: cover; height: 25px; width: 100%" />
             </div>
+
             <!-- <div>
                 <img data-u="image" src="../img/3.jpg" />
             </div>
@@ -135,7 +201,7 @@ include "sidebar.php";
 
 <!-- Trending Part Start -->
 <div style="border-bottom: 3px solid #A9A9A9;margin-top: 5%">
-    <h3><b>Trending</b></h3>
+    <h3 class="section-title"><b>Trending</b></h3>
 
 <div class="row">
 
@@ -144,8 +210,7 @@ include "sidebar.php";
 
 <div class="col-md-4 product">
     <div style="border-bottom: 1px solid #A9A9A9">
-    <a href="product_page.php?pId=<?= $row['id']; ?>"> <?php echo "<img style=\"width:100%;height:220px;\" src='../seller/productPic/".$row['productPic']."'>"; ?> </a>
-    <p style="font-size: 10px;"><?= $row['shopName']; ?></p>
+    <a href="product_page.php?pId=<?= $row['id']; ?>"> <?php echo "<img src='../seller/productPic/".$row['productPic']."'>"; ?> </a>
     </div>
      <p style="width: 220px"><b><a href="product_page.php?pId=<?= $row['id']; ?>"><?= $row['productName']; ?></a></b></p>
      <span data-currency-iso="BDT">৳</span> <?= $row['price']; ?><br>
@@ -169,7 +234,7 @@ include "sidebar.php";
 
     <!-- Popular part start -->
     <div style="border-bottom: 3px solid #A9A9A9;margin-top: 5%">
-    <h3><b>Products</b></h3>
+    <h3 class="section-title"><b>Products</b></h3>
 
 <div class="row">
 
@@ -177,8 +242,7 @@ include "sidebar.php";
 
 <div class="col-md-4 product">
     <div style="border-bottom: 1px solid #A9A9A9">
-    <a href="product_page.php?pId=<?= $row['id']; ?>"> <?php echo "<img style=\"width:100%;height:220px;\" src='../seller/productPic/".$row['productPic']."'>"; ?> </a>
-    <p style="font-size: 10px;"><?= $row['shopName']; ?></p>
+    <a href="product_page.php?pId=<?= $row['id']; ?>"> <?php echo "<img src='../seller/productPic/".$row['productPic']."'>"; ?> </a>
     </div>
      <p style="width: 220px"><b><a href="product_page.php?pId=<?= $row['id']; ?>"><?= $row['productName']; ?></a></b></p>
      <span data-currency-iso="BDT">৳</span> <?= $row['price']; ?><br>
@@ -201,8 +265,8 @@ include "sidebar.php";
 <!-- Product Information End -->
 
 <div align="center">
-<h3><b>What is Grameenshilpo.com</b></h3>
-<p><a style="color: darkblue" href="about.php">Read more...</a></p>
+<h3 class="section-title"><b>What is Grameenshilpo.com</b></h3>
+<p><a style="color: #F8A036" href="about.php">Read more...</a></p>
 </div>
 
 <!-- <div align="center" style="margin-top: 3%">
@@ -221,4 +285,3 @@ include "sidebar.php";
 
 </body>
 </html>
-
